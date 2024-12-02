@@ -1,12 +1,13 @@
 use clap::Parser;
-use std::{fs::read_to_string, path::PathBuf, process::exit};
+use std::{fs::File, io::BufReader, path::PathBuf, process::exit};
 
 fn main() {
-    let file = Args::parse().input;
-    let input = read_to_string(file).unwrap_or_else(|e| {
-        eprintln!("Error: {e}");
-        exit(1)
-    });
+    let input = BufReader::new(File::open(Args::parse().input).unwrap_or_else(|err| die(err)));
+}
+
+fn die<T: ToString>(err: T) -> ! {
+    eprintln!("Error: {}", err.to_string());
+    exit(1);
 }
 
 #[derive(Parser, Debug)]
