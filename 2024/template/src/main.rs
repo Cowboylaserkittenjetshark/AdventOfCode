@@ -1,5 +1,5 @@
 use clap::Parser;
-use std::{fs::File, io::BufReader, path::PathBuf, process::exit};
+use std::{fs::File, io::{BufRead, BufReader}, path::PathBuf, process::exit};
 
 fn main() {
     let input = BufReader::new(File::open(Args::parse().input).unwrap_or_else(|err| die(err)));
