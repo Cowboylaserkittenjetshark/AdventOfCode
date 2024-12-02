@@ -33,15 +33,22 @@ fn main() {
     let distance: u32 = sorted.map(|(l, r)| max(l, r) - min(l, r)).sum();
     println!("{distance}");
 
-    let mut counts = HashMap::new();
-    for id in left {
-        counts.entry(id).or_insert(0);
-    }
+    let mut counts: HashMap<u32, u32> = HashMap::new();
+    // for id in left {
+    //     counts.entry(id).or_insert(0);
+    // }
     for id in right {
-        counts.entry(id).and_modify(|count| *count += 1);
+        counts
+            .entry(id)
+            .and_modify(|count| *count += 1)
+            .or_insert(1);
     }
     // println!("{}", counts.into_values().sum::<u32>());
-    let score: u32 = counts.iter().map(|(key, value)| key * value).sum();
+    // let score: u32 = counts.iter().map(|(key, value)| key * value).sum();
+    let score: u32 = left
+        .iter()
+        .map(|k| *k * *counts.entry(*k).or_default())
+        .sum();
     println!("Similarity Score: {score}");
 }
 
