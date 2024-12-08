@@ -1,0 +1,95 @@
+   Compiling day-6 v0.1.0 (/home/cblkjs/projects/AdventOfCode/2024/day-6)
+warning: unreachable statement
+  --> src/main.rs:48:5
+   |
+47 |       panic!();
+   |       -------- any code following this expression is unreachable
+48 | /     while !(match guard_heading {
+49 | |         NORTH => gy == 0,
+50 | |         EAST => gx == x_dim - 1,
+51 | |         SOUTH => gy == y_dim - 1,
+...  |
+67 | |         }
+68 | |     }
+   | |_____^ unreachable statement
+   |
+   = note: `#[warn(unreachable_code)]` on by default
+
+warning: variable `y_dim` is assigned to, but never used
+  --> src/main.rs:15:9
+   |
+15 |     let y_dim;
+   |         ^^^^^
+   |
+   = note: consider using `_y_dim` instead
+   = note: `#[warn(unused_variables)]` on by default
+
+warning: unused variable: `guard_heading`
+  --> src/main.rs:20:13
+   |
+20 |     let mut guard_heading = NORTH;
+   |             ^^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_guard_heading`
+
+warning: unused variable: `positions`
+  --> src/main.rs:21:13
+   |
+21 |     let mut positions = 1;
+   |             ^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_positions`
+
+warning: unused variable: `x_dim`
+  --> src/main.rs:42:9
+   |
+42 |     let x_dim = x_dim.unwrap_or_else(|| die("Invalid input: zero length"));
+   |         ^^^^^ help: if this is intentional, prefix it with an underscore: `_x_dim`
+
+warning: value assigned to `y_dim` is never read
+  --> src/main.rs:43:5
+   |
+43 |     y_dim = y;
+   |     ^^^^^
+   |
+   = help: maybe it is overwritten before being read?
+   = note: `#[warn(unused_assignments)]` on by default
+
+warning: variable does not need to be mutable
+  --> src/main.rs:20:9
+   |
+20 |     let mut guard_heading = NORTH;
+   |         ----^^^^^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+   |
+   = note: `#[warn(unused_mut)]` on by default
+
+warning: variable does not need to be mutable
+  --> src/main.rs:21:9
+   |
+21 |     let mut positions = 1;
+   |         ----^^^^^^^^^
+   |         |
+   |         help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> src/main.rs:45:10
+   |
+45 |     let (mut gx, mut gy) = guard_coords.unwrap_or_else(|| die("Invalid Input: no guard character"));
+   |          ----^^
+   |          |
+   |          help: remove this `mut`
+
+warning: variable does not need to be mutable
+  --> src/main.rs:45:18
+   |
+45 |     let (mut gx, mut gy) = guard_coords.unwrap_or_else(|| die("Invalid Input: no guard character"));
+   |                  ----^^
+   |                  |
+   |                  help: remove this `mut`
+
+warning: `day-6` (bin "day-6") generated 10 warnings (run `cargo fix --bin "day-6"` to apply 4 suggestions)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.56s
+     Running `target/debug/day-6 example-input.txt`
+[src/main.rs:46:5] gx = 4
+[src/main.rs:46:5] gy = 6
+thread 'main' panicked at src/main.rs:47:5:
+explicit panic
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace

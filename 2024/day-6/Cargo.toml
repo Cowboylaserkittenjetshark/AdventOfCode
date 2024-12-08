@@ -1,0 +1,8 @@
+[package]
+name = "day-6"
+version = "0.1.0"
+authors = [ "Cowboylaserkittenjetshark@cblkjs.com" ]
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.5.21", features = ["derive"] }
